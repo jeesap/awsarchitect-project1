@@ -1,0 +1,33 @@
+[ec2-user@ip-10-1-10-63 ~]$ mysql -h udacity.c3jttbrjveyr.us-west-2.rds.amazonaws.com -P 3306 -u admin -p udacity
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 58
+Server version: 8.0.20 Source distribution
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> CREATE TABLE Persons (
+    ->     Name varchar(255),
+    ->     City varchar(255)
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> INSERT INTO Persons (Name, City) VALUES ('Jees', 'Chennai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Persons;
++------+---------+
+| Name | City    |
++------+---------+
+| Jees | Chennai |
++------+---------+
+1 row in set (0.00 sec)
+
+mysql>

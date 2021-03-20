@@ -1,0 +1,8 @@
+Minimum RTO for a single AZ outage
+In this project , the database is configured as multi-AZ . Hence whenever an AZ which runs the database fails, automatic failover will take place. To find out the minimum RTO for such outage, I have performed reboot of the DB with failover and measured the time it took to be active on other AZ. It is seen that the minimum RTO was 1 minute 53 seconds. 
+Minimum RTO for a single region outage
+In case of a single region outage, there is a read replica database configured in standby region. Read replica database can be promoted in place of master database. This will need to be done manually . To find out the minimum RTO for such outage, I have promoted the read replica and it is measured that it took 5 minutes. So the minimum RTO in this case is 5 minutes.
+Minimum RPO for a single AZ outage
+As the database is configured as multi A-Z , synchronous replication exists from one AZ to another. This means the database is replicated without a time delay. In the case of a single AZ outage , there is no chance of data loss and RPO. Hence minimum RPO will be zero.
+Minimum RPO for a single region outage
+As the database is replicated in asynchronous mode from active region to standby, there will be a data loss in case of active region outage.  The amount of time that the replica is behind the source database is known as replica lag. Replica lag can vary based on the network latency between the source and destination Regions.Hence , RPO cannot be zero in this case and will be based on the replica lag.
